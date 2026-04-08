@@ -2,6 +2,8 @@ package br.techcorp.departamento;
 
 import br.techcorp.funcionario.Funcionario;
 
+import java.text.DecimalFormat;
+
 public class Departamento {
     private String codigo;
     private String nome;
@@ -57,6 +59,14 @@ public class Departamento {
         }
     }
 
+    public String exibirRelatorio() {
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        String aux = "";
+        aux += "Departamento: " + nome + "\n";
+        aux += "Total de funcionários ativos: " + getTotalFuncionariosAtivos() + "\n";
+        aux += "Folha de pagamento: " + df.format(calcularFolhaTotalLiquida()) + "\n";
+        return aux;
+    }
 
     public String getCodigo() {
         return codigo;
